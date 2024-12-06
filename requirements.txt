@@ -1,1 +1,8 @@
 gradio
+beautifulsoup4
+requests
+transformers
+torch
+sentencepiece
+sacremoses
+re

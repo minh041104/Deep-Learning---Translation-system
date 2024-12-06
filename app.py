@@ -1,23 +1,45 @@
 import gradio as gr
-from model.translator import translate_text
+from models.translator import translate_text 
 
-with gr.Blocks() as demo:
-    gr.Markdown("<h1>Please select a language and provide a URL.</h1>")
-    with gr.Row(equal_height=True):
-        url = gr.Textbox(label="URL")
-        language = gr.Radio(
-            choices=["English", "Spanish", "Vietnamese", "German", "French"], 
-            label="Language", 
-            value="English",
-            scale=0.5
+# Giao diện Gradio
+def create_demo():
+    with gr.Blocks() as demo:
+        gr.Markdown("<h1>Automatic Translation System</h1>")
+        gr.Markdown("### Provide a URL and select the target language for translation.")
+        
+        with gr.Row(equal_height=True):
+            url_input = gr.Textbox(
+                label="URL", 
+                placeholder="Enter a URL",
+                lines=1
+            )
+            language_input = gr.Radio(
+                choices=["English", "Spanish", "Vietnamese", "German", "French"], 
+                label="Select Target Language", 
+                value="English"
+            )
+            submit_button = gr.Button("Translate")
+
+        with gr.Row():
+            original_text_output = gr.Textbox(
+                label="Original Text", 
+                placeholder="The original text will appear here.",
+                interactive=False,
+            )
+
+            result_output = gr.Textbox(
+                label="Translated Text",
+                placeholder="The translated text will appear here.",
+                interactive=False
+            )
+            
+        submit_button.click(
+            translate_text,
+            inputs=[url_input, language_input],
+            outputs=[original_text_output, result_output]
         )
-        button = gr.Button("Submit",scale=0.5)
-    textbox = gr.Textbox(label="Result")
+    return demo
 
-    button.click(
-        translate_text,
-        inputs=[url, language],
-        outputs=textbox
-    )
-
-demo.launch()
+if __name__ == "__main__":
+    demo = create_demo()
+    demo.launch()
