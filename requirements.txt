@@ -1,8 +1,8 @@
-gradio
-beautifulsoup4
-requests
-transformers
-torch
-sentencepiece
-sacremoses
-regex
+torch==2.5.1+cpu
+gradio==5.8.0
+beautifulsoup4==4.12.3
+requests==2.32.3
+transformers==4.47.0
+sentencepiece==0.2.0
+sacremoses==0.1.1
+regex==2.5.148
