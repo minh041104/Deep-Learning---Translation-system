@@ -5,4 +5,4 @@ transformers
 torch
 sentencepiece
 sacremoses
-re
+regex

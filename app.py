@@ -14,7 +14,7 @@ def create_demo():
                 lines=1
             )
             language_input = gr.Radio(
-                choices=["English", "Spanish", "Vietnamese", "German", "French"], 
+                choices=["English", "Spanish", "Vietnamese", "French"], 
                 label="Select Target Language", 
                 value="English"
             )
