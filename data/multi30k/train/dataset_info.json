@@ -1,0 +1,62 @@
+{
+  "builder_name": "json",
+  "citation": "",
+  "config_name": "default",
+  "dataset_name": "multi30k",
+  "dataset_size": 4369661,
+  "description": "",
+  "download_checksums": {
+    "hf://datasets/bentrevett/multi30k@4589883f3d09d4ef6361784e03f0ead219836469/train.jsonl": {
+      "num_bytes": 4598515,
+      "checksum": null
+    },
+    "hf://datasets/bentrevett/multi30k@4589883f3d09d4ef6361784e03f0ead219836469/val.jsonl": {
+      "num_bytes": 163562,
+      "checksum": null
+    },
+    "hf://datasets/bentrevett/multi30k@4589883f3d09d4ef6361784e03f0ead219836469/test.jsonl": {
+      "num_bytes": 156307,
+      "checksum": null
+    }
+  },
+  "download_size": 4918384,
+  "features": {
+    "en": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "de": {
+      "dtype": "string",
+      "_type": "Value"
+    }
+  },
+  "homepage": "",
+  "license": "",
+  "size_in_bytes": 9288045,
+  "splits": {
+    "train": {
+      "name": "train",
+      "num_bytes": 4085636,
+      "num_examples": 29000,
+      "dataset_name": "multi30k"
+    },
+    "validation": {
+      "name": "validation",
+      "num_bytes": 145300,
+      "num_examples": 1014,
+      "dataset_name": "multi30k"
+    },
+    "test": {
+      "name": "test",
+      "num_bytes": 138725,
+      "num_examples": 1000,
+      "dataset_name": "multi30k"
+    }
+  },
+  "version": {
+    "version_str": "0.0.0",
+    "major": 0,
+    "minor": 0,
+    "patch": 0
+  }
+}
