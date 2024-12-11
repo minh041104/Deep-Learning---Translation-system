@@ -7,7 +7,7 @@ def translate_text(url, target_language, num_sentences=1):
         "English": "en",
         "Spanish": "es",
         "Vietnamese": "vi",
-        "French": "fr"
+        "German": "de"
     }
     target_code = language_map.get(target_language)
     

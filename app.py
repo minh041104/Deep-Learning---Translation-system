@@ -1,7 +1,6 @@
 import gradio as gr
 from models.translator import translate_text 
 
-# Giao diện Gradio
 def create_demo():
     with gr.Blocks() as demo:
         gr.Markdown("<h1>Automatic Translation System</h1>")
@@ -14,7 +13,7 @@ def create_demo():
                 lines=1
             )
             language_input = gr.Radio(
-                choices=["English", "Spanish", "Vietnamese", "French"], 
+                choices=["English", "Spanish", "Vietnamese", "German"], 
                 label="Select Target Language", 
                 value="English"
             )
