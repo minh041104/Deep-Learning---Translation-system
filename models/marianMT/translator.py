@@ -1,5 +1,5 @@
 from transformers import MarianMTModel, MarianTokenizer
-from text_extractor import extract_text_from_url
+from models.marianMT.text_extractor import extract_text_from_url
 import re
 
 def translate_text(url, target_language, num_sentences=1):
