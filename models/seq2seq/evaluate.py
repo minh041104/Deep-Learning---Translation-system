@@ -31,6 +31,7 @@ def translate_sentence(encoder, decoder, sentences, src_vocab, tgt_vocab, src_nl
         output_sentence = ' '.join(output_words)
         results.append(output_sentence)
     return results
+
 def evaluateRandom(encoder, decoder, data, src_vocab, tgt_vocab, src_nlp, tgt_nlp, device, n=10):
     total_bleu = 0
     for i in range(n):
@@ -52,6 +53,7 @@ def evaluateRandom(encoder, decoder, data, src_vocab, tgt_vocab, src_nlp, tgt_nl
 
     avg_bleu = total_bleu / n
     print(f"Average BLEU score: {avg_bleu:.4f}")
+
 def calcBLEU(encoder, decoder, test_data, src_vocab, tgt_vocab, src_nlp, tgt_nlp, device):
     total_bleu = 0
     
