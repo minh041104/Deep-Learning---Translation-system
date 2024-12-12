@@ -1,6 +1,5 @@
 import torch
 import torch.nn as nn
-from torch import optim
 import torch.nn.functional as F
 
 class Encoder(nn.Module):
@@ -32,6 +31,7 @@ class BahdanauAttention(nn.Module):
         context = torch.bmm(weights, keys)
 
         return context, weights
+    
 class DecoderAttn(nn.Module):
     def __init__(self, hidden_size, output_size, device, max_length = 20,\
                      sos_token = 0, eos_token = 1, unk_token = 2, num_layers = 1, dropout_p=0.2):

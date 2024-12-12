@@ -6,7 +6,6 @@ import pandas as pd
 import torch
 import numpy as np
 from torch.utils.data import TensorDataset, DataLoader
-import time
 import math
 
 def download_data(path_to_save, path_download="bentrevett/multi30k"):
@@ -119,6 +118,7 @@ def tensorFromSentence(vocab, sentence, nlp, device, eos_token=1):
     indexes = indexesFromSentence(vocab, sentence, nlp)
     indexes.append(eos_token)
     return torch.tensor(indexes, dtype=torch.long, device=device).view(1, -1)
+
 def get_dataloader(data, src_vocab, tgt_vocab, src_nlp, tgt_nlp, device, batch_size = 64,\
                    max_length=20, sos_token = 0, eos_token = 1):
     input_ids = np.zeros((len(data), max_length), dtype=np.int32)
@@ -149,3 +149,6 @@ def timeSince(since, percent):
     es = s / (percent)
     rs = es - s
     return '%s (- %s)' % (asMinutes(s), asMinutes(rs))
+
+def filter_data(texts):
+    return len(en_nlp.tokenizer(texts['en'])) <= max_length and len(vi_nlp.tokenizer(texts['vi'])) <= max_length

@@ -1,6 +1,4 @@
-from utils import timeSince
-import time
-import torch
+from utils.preprocessor import time, timeSince
 
 def train_epoch(dataloader, encoder, decoder, encoder_optimizer,
                 decoder_optimizer, criterion):
@@ -28,7 +26,7 @@ def train_epoch(dataloader, encoder, decoder, encoder_optimizer,
 
     return total_loss / len(dataloader)
 
-def train(train_dataloader, encoder, decoder, encoder_opt, decoder_opt, criterion_alg,
+def training(train_dataloader, encoder, decoder, encoder_opt, decoder_opt, criterion_alg,
           n_epochs, print_every=100):
     print_loss_total = 0 
     loss_each_epoch = []

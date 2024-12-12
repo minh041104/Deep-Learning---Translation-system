@@ -1,5 +1,5 @@
 import random
-from utils import tensorFromSentence
+from utils.preprocessor import tensorFromSentence
 from nltk.translate.bleu_score import sentence_bleu,SmoothingFunction
 import torch
 
