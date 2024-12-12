@@ -149,6 +149,3 @@ def timeSince(since, percent):
     es = s / (percent)
     rs = es - s
     return '%s (- %s)' % (asMinutes(s), asMinutes(rs))
-
-def filter_data(texts):
-    return len(en_nlp.tokenizer(texts['en'])) <= max_length and len(vi_nlp.tokenizer(texts['vi'])) <= max_length

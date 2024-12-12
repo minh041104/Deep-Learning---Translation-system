@@ -1,5 +1,5 @@
 import gradio as gr
-from models.translator import translate_text 
+from models.marianMT.translator import translate_text 
 
 def create_demo():
     with gr.Blocks() as demo:

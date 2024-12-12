@@ -30,7 +30,7 @@ def extract_text_from_url(url):
         text = soup.get_text(separator='\n')
         lines = [line.strip() for line in text.splitlines()]
         text = '\n'.join(line for line in lines if line)
-        if len(text.strip()) < 100:
+        if len(text.strip()) < 200:
             raise Exception("Không đủ nội dung, chuyển sang phương pháp Selenium")
 
         return text
