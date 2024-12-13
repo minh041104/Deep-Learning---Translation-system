@@ -66,3 +66,41 @@ def calcBLEU(encoder, decoder, test_data, src_vocab, tgt_vocab, src_nlp, tgt_nlp
 
     avg_bleu = total_bleu / len(test_data)
     return avg_bleu
+
+def calculate_meteor(reference, hypothesis):
+    from nltk.translate.meteor_score import single_meteor_score
+    # Chuyển chuỗi thành danh sách các token
+    reference_tokens = reference.split()
+    hypothesis_tokens = hypothesis.split()
+    return single_meteor_score(reference_tokens, hypothesis_tokens)
+
+def calcMetrics(encoder, decoder, test_data, src_vocab, tgt_vocab, src_nlp, tgt_nlp, device):
+    from nltk.translate.bleu_score import sentence_bleu, SmoothingFunction
+    total_bleu = 0
+    total_rouge = {'rouge1': 0, 'rouge2': 0, 'rougeL': 0}
+    total_meteor = 0
+
+    for pair in test_data:
+        output_words = translate_sentence(encoder, decoder, [pair['en']], src_vocab, tgt_vocab, src_nlp, device)[0]
+        output_sentence = ' '.join(output_words)
+
+        reference = pair['vi']
+        reference_tokens = reference.split()  # Tách token
+        hypothesis_tokens = output_sentence.split()  # Tách token
+
+        chencherry = SmoothingFunction()
+        bleu_score = sentence_bleu([reference_tokens], hypothesis_tokens, smoothing_function=chencherry.method1)
+        total_bleu += bleu_score
+
+        rouge_scores = calculate_rouge(reference, output_sentence)
+        for key in total_rouge:
+            total_rouge[key] += rouge_scores[key]
+
+        meteor_score = calculate_meteor(reference, output_sentence)  # Không cần tách token thêm nữa
+        total_meteor += meteor_score
+
+    avg_bleu = total_bleu / len(test_data)
+    avg_rouge = {key: total_rouge[key] / len(test_data) for key in total_rouge}
+    avg_meteor = total_meteor / len(test_data)
+
+    return avg_bleu, avg_rouge, avg_meteor
